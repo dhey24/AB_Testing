@@ -123,7 +123,7 @@ for i in range(3):
 	dhat = phat_e - phat_c
 	phat_pool = float(c_df[var_x].sum() + e_df[var_x].sum()) / (c_df[var_n].sum() + e_df[var_n].sum())
 	se_pool = np.sqrt(phat_pool * (1 - phat_pool) * (1.0/c_df[var_n].sum() + 1.0/e_df[var_n].sum()))
-	z = 1.96
+	z = 2.24	#now using Bonfierri alpha = .05/2, previously was 1.96
 	upper = round(dhat + z * se_pool, 4)
 	lower = round(dhat - z * se_pool, 4)
 	print var_x, "/", var_n 

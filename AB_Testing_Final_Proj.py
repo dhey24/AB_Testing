@@ -17,8 +17,7 @@ import numpy as np
         14-day boundary (and thus make at least one payment) divided by the 
         number of unique cookies to click the "Start free trial" button. 
         (dmin= 0.0075)
-"""
-"""
+
 #Calculating Standard Deviation
 probs = {'p_g_conversion' : 0.20625, 
          'p_retention' : 0.53, 
@@ -37,6 +36,7 @@ print 'p_retention sd =', round(sd,4)
 n = 5000 * .08
 sd = np.sqrt(probs['p_n_conversion'] * (1 - probs['p_n_conversion']) / n)
 print 'p_n_conversion sd =', round(sd,4)
+"""
 
 #Calculating Number of Pageviews
 a = .05
@@ -47,6 +47,7 @@ n_retention = 0 #39115 /.08 / 0.20625 #Note this is 0 because using the retentio
 n_n_conversion = 27413 / .08
 pageviews = max(n_g_conversion, n_retention, n_n_conversion) * 2
 print pageviews
+"""
 #Duration and exposure
 pageviews = round(pageviews, 0)
 traffic = 40000
@@ -123,7 +124,7 @@ for i in range(3):
 	dhat = phat_e - phat_c
 	phat_pool = float(c_df[var_x].sum() + e_df[var_x].sum()) / (c_df[var_n].sum() + e_df[var_n].sum())
 	se_pool = np.sqrt(phat_pool * (1 - phat_pool) * (1.0/c_df[var_n].sum() + 1.0/e_df[var_n].sum()))
-	z = 2.24	#now using Bonfierri alpha = .05/2, previously was 1.96
+	z = 1.96
 	upper = round(dhat + z * se_pool, 4)
 	lower = round(dhat - z * se_pool, 4)
 	print var_x, "/", var_n 
